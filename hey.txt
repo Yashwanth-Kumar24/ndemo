@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Heya
-=======
-You are so bad buddy
->>>>>>> ba13cedc897ec3da44668640313cdc30a6142131
+Hey
