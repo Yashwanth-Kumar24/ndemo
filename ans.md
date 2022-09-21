@@ -12,12 +12,16 @@
 
 ## Part 2 Answers
 - The following commands only print the result on the shell
+- In order to replace in file we can use command as follows: `sed -i <condition> sedfile.html`
+- In order to test working, I have printed to shell and worked with option `-i` in later phase.
+
 1. `sed 's/<[\/][a-zA-Z0-9]*>//g' sedfile.html`
 2. `sed 's/^\s*<li>/- /g' sedfile.html`
 3. `sed 's/\s*<h1>/# /g' sedfile.html`
 4. `sed 's/\s*<h2>/## /g' sedfile.html`
 5. `sed 's/<ul>//' sedfile.html | sed 's/<html>//'`
 6. `sed 's/Batches/Matches/g' sedfile.html`
+
 #### I found that all my sed commands working are as expected, then I have implemented the following to get final output.
 - In order to create sedfile.md file, I have run the 1st command as follows `sed <condition> sedfile.html > sedfile.md`. This resulted in new file sedfile.md
 - In the further commands, I have used `sed -i <condition> sedfile.md`, this resulted me to get final expected output in sedfile.md file
