@@ -18,9 +18,10 @@
 4. `sed 's/\s*<h2>/## /g' sedfile.html`
 5. `sed 's/<ul>//' sedfile.html | sed 's/<html>//'`
 6. `sed 's/Batches/Matches/g' sedfile.html`
-#### I found that all my sed commands are as expected, then I have implemented the following to get final output.
+#### I found that all my sed commands working are as expected, then I have implemented the following to get final output.
 - In order to create sedfile.md file, I have run the 1st command as follows `sed <condition> sedfile.html > sedfile.md`. This resulted in new file sedfile.md
 - In the further commands, I have used `sed -i <condition> sedfile.md`, this resulted me to get final expected output in sedfile.md file
+- For command 5, I did as follows : `sed 's/<ul>//' sedfile.md | sed 's/<html>//' | tee sedfile.md`, this writes the output to same file as expected. Other commands are run as mentioned in step 2.
 
 ## Part 3 Answers
 
