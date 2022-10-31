@@ -39,7 +39,7 @@
    - Now perform `sudo strings /dev/xvdb1` and no traces of data can be found.
    - After deleting, if we try to see the content using `strings`, it is as follows:
       - ![Applying strings after shred](Capture3.PNG)
-12. sudo umount `/dev/xvdb1`. No, files and folders cannot be accessed as the disk is removed. `expanse` is now empty. To view content, just mount it to any directory and get into it, we can see the files, folders.
+12. `sudo umount /dev/xvdb1`. No, files and folders cannot be accessed as the disk is removed. `expanse` is now empty. To view content, just mount it to any directory and get into it, we can see the files, folders.
 
 
 ## Part 2 Answers
@@ -51,14 +51,16 @@
    - number of blocks storing `original.txt`: `8`
    - number of links to `original.txt`: `1`
 3. Command to create a hard link to `original.txt`: `ln original.txt hardLink`
-   - What identifiers indicate a hard link was created? : `ls -i` gives inode numbers followed by filenames. So here if two files have same inode numbers then there is a hardlink between them. Also using `stat <filename>`, we can find the size, inode of the files.
+   - What identifiers indicate a hard link was created? : 
+      - `ls -i` gives inode numbers followed by filenames. So here if two files have same inode numbers then there is a hardlink between them. Also using `stat <filename>`, we can find the size, inode of the files.
    - Does modifying the hard linked file modify `original.txt`? Explain
       - Yes, it modifies original file as well.
-      - Any change made to either of the files, will result changes in both. Size changes.
+      - Any change made to either of the file's content, will result changes in both. Size changes.
       - As `inode` value is same, it points to same location, whenever there is change in content it reflects in both files.
-      - Even though if name of the original file is changed or even if `original.txt` is deleted, the hardLink file has no changes, we can still access it and read the contents of it.
+      - Even though if name of the original file is changed, moved to different path or even if `original.txt` is deleted, the hardLink file has no changes, we can still access it and read the contents of it.
 4. Command to create a symbolic link to `original.txt` : `ln -s original.txt softLink`
-   - What identifiers indicate a symbolic link was created? : `ls -l`, lists all details of files. Here clearly we can be `l` as part of file permissions. `lrwxrwxrwx`, so the starting `l`,represents it is softlink file. Also there is a link showing like: `softLink -> original.txt`. Which means, `softLink` is a file which has link to `original.txt`.
+   - What identifiers indicate a symbolic link was created? : 
+      - `ls -l`, lists all details of files. Here clearly we can see `l` as part of file permissions. `lrwxrwxrwx`, so the starting `l`,represents it is softlink file. Also there is a link showing like: `softLink -> original.txt`. Which means, `softLink` is a file which has link to `original.txt`.
       - Both have different inode values, different sizes, blocks. (can be seen using `stat` command)
    - If `original.txt` was deleted, and a new `original.txt` was created, would the sym link still work? Explain
       - Yes, the symbolic link still works fine. On deleting the file and creating new file with same name, symbolic link has no effect.
@@ -82,7 +84,7 @@
 ## Extra Credit Answers
 
 1. Make a backup of the current version of `/etc/fstab`: 
-   - Created a back up file of /etc/fstab: `cp /etc/fstab ~/fstabs.backup`
+   - Created a back up file of /etc/fstab: `cp /etc/fstab ~/fstab.backup`
 2. Add your partition and the mount point (`/mnt/expanse`) to `/etc/fstab`
    - Line added to `/etc/fstab`: `/dev/xvdb1       /mnt/expanse    ext4    defaults        0 0`
 3. I did `sudo mount -a` and then `df` and I found my parition is successfully mounted to the `/mnt/expanse` and I can see my files which are created previously.
