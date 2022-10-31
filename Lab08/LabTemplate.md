@@ -1,7 +1,7 @@
 ## Lab 08
 
-- Name:
-- Email
+- Name: Pranav Ponugoti
+- Email: pranav.16@wright.edu
 
 ## Part 1 Answers
 
