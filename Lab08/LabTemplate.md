@@ -27,18 +27,18 @@
    - create a file with some content. `sudo nano demo` and enter some text, save and exit
    - Check `sudo strings /dev/xvdb1`
    - Here is the screenshot of above work:
-      - [Before applying shred](Capture1.png)
+      - [Before applying shred](Capture1.PNG)
    - Once check content using `cat demo`. Now use `sudo shred -v demo` and then `cat demo`. 
    - We can see text overwritten 3 times(default) and is completely in unreadble format.
    - Here is the screenshot of above work:
-      - [After applying shred](Capture2.png)
+      - ![After applying shred](Capture2.png)
    - Now to delete `sudo rm demo` can be used.
    - I have created demo2 and applied `sudo shred -zu demo2`. Here is the work
    - The best way is `sudo shred -zu demo2` - this overwrites the content 3 times(default)(can use -n 5 to make 5 times), replaces final pass with zeros to hide shredding(-z) and then removes the file(-u).
-      - [Applying strings after shred -zu](Capture4.png)
+      - ![Applying strings after shred -zu](Capture4.PNG)
    - Now perform `sudo strings /dev/xvdb1` and no traces of data can be found.
    - After deleting, if we try to see the content using `strings`, it is sa follows:
-      - [Applying strings after shred](Capture3.png)
+      - ![Applying strings after shred](Capture3.PNG)
 12. sudo umount `/dev/xvdb1`. No files and folders cannot be accessed as the disk is removed. `expanse` is now empty. To view content, just mount it to any directory and we can see the files, folders.
 
 
